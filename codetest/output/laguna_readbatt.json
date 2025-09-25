@@ -1,0 +1,259 @@
+[
+  {
+    "function_name": "ft_aop_sensor_stream",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "shell",
+        "type": "RTK_shell",
+        "meaning": ""
+      },
+      {
+        "name": "sensor_list",
+        "type": "const char *const",
+        "meaning": ""
+      },
+      {
+        "name": "sensor_count",
+        "type": "size_t",
+        "meaning": ""
+      },
+      {
+        "name": "interval",
+        "type": "uint32_t",
+        "meaning": ""
+      },
+      {
+        "name": "count",
+        "type": "uint32_t",
+        "meaning": ""
+      },
+      {
+        "name": "aop_sensor_mode",
+        "type": "uint8_t",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "RTK_SHELL_PRINTF",
+      "assert",
+      "context",
+      "init",
+      "run",
+      "wait"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "FT_SHELL_METHOD",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_shell_accel.cpp:36-56",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "accel_sensor_stream",
+        "type": "accel_sensor_stream",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "RTK_scheduler_pause",
+      "ft_aop_sensor_ft_mode",
+      "ft_aop_sensor_stream"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "FT_SHELL_METHOD",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_shell_imu.cpp:36-59",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "imu_sensor_stream",
+        "type": "imu_sensor_stream",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "RTK_scheduler_pause",
+      "ft_aop_sensor_ft_mode",
+      "ft_aop_sensor_stream"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "FT_SHELL_METHOD",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_shell_gyro.cpp:36-55",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "gyro_sensor_stream",
+        "type": "gyro_sensor_stream",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "RTK_scheduler_pause",
+      "ft_aop_sensor_ft_mode",
+      "ft_aop_sensor_stream"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "ft_aop_sensor_stream",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/modules/aop_sensor/src/ft_aop_sensor.cpp:79-115",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "shell",
+        "type": "RTK_shell",
+        "meaning": ""
+      },
+      {
+        "name": "sensor_list",
+        "type": "const char *const",
+        "meaning": ""
+      },
+      {
+        "name": "sensor_count",
+        "type": "size_t",
+        "meaning": ""
+      },
+      {
+        "name": "interval",
+        "type": "uint32_t",
+        "meaning": ""
+      },
+      {
+        "name": "batch_interval",
+        "type": "uint32_t",
+        "meaning": ""
+      },
+      {
+        "name": "count",
+        "type": "uint32_t",
+        "meaning": ""
+      },
+      {
+        "name": "aop_sensor_mode",
+        "type": "uint8_t",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_PRINTF",
+      "assert",
+      "context",
+      "init",
+      "run",
+      "wait"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "FT_SHELL_METHOD",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/modules/aop_sensor/src/ft_shell_accel.cpp:36-56",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "accel_sensor_stream",
+        "type": "accel_sensor_stream",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "RTK_scheduler_pause",
+      "ft_aop_sensor_ft_mode",
+      "ft_aop_sensor_stream"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "FT_SHELL_METHOD",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/modules/aop_sensor/src/ft_shell_imu.cpp:36-60",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "imu_sensor_stream",
+        "type": "imu_sensor_stream",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "RTK_scheduler_pause",
+      "ft_aop_sensor_ft_mode",
+      "ft_aop_sensor_stream"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "FT_SHELL_METHOD",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/modules/aop_sensor/src/ft_shell_compass.cpp:36-68",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "compass_sensor_stream",
+        "type": "compass_sensor_stream",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "RTK_scheduler_pause",
+      "aop_service_find",
+      "aop_service_set_property",
+      "ft_aop_sensor_ft_mode",
+      "ft_aop_sensor_stream"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "FT_SHELL_METHOD",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/modules/aop_sensor/src/ft_shell_gyro.cpp:36-55",
+    "role": "```json\n[\n    {\n        \"function_name\": \"ft_aop_sensor_stream\",\n        \"location\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp:65-96\",\n        \"role\": \"该函数主要用于启动/控制 AOP 传感器数据流的输出，通过 shell 接口将指定传感器（按列表）以固定的采样间隔（interval）和采集次数（count）持续输出数据。\",\n        \"parameters\": [\n            { \"name\": \"shell\", \"type\": \"RTK_shell *\", \"meaning\": \"指向 RTK 提供的 shell 实例，用于输出日志或执行命令。\" },\n            { \"name\": \"sensor_list\", \"type\": \"const char *const\", \"meaning\": \"传感器名称的字符串数组，指示需要采集哪些传感器的数据。\" },\n            { \"name\": \"sensor_count\", \"type\": \"size_t\", \"meaning\": \"传感器列表中元素的数量，即待采集传感器的个数。\" },\n            { \"name\": \"interval\", \"type\": \"uint32_t\", \"meaning\": \"数据采集的间隔时间（单位通常为毫秒）。\" },\n            { \"name\": \"count\", \"type\": \"uint32_t\", \"meaning\": \"计划采集的数据点数量；若为 0，可能表示无限采集（直到被停止）。\" },\n            { \"name\": \"aop_sensor_mode\", \"type\": \"uint8_t\", \"meaning\": \"配置传感器的采集模式，如 AOP_SENSOR_MODE_RAW 等。\" }\n        ],\n        \"called_functions\": [\n            \"RTK_SHELL_PRINTF\",    // 推测用于输出日志或调试信息\n            \"assert\",             // 可能用于参数校验或运行时检查\n            \"context\",            // 可能获取或设置当前执行环境\n            \"init\",               // 推测用于初始化传感器或相关设备\n            \"run\",                // 启动数据流采集的具体操作\n            \"wait\"                // 可能用于等待采集完成或暂停执行\n        ],\n        \"logic_flow\": [\n            \"1) 接收 shell、传感器列表及配置参数（间隔、次数、模式等）。\",\n            \"2) 调用 init() 进行传感器或模块初始化（如配置寄存器、开启硬件）。\",\n            \"3) 进入 run() 流程，开始以指定 interval 间隔持续采集 sensor_count 个数据点（或无限循环）。\",\n            \"4) 每采集完一个数据点，可能通过 RTK_SHELL_PRINTF 输出结果至终端。\",\n            \"5) 采集完成（或接到停止信号）后，调用 wait() 或其他清理函数，最终返回。\"\n        ],\n        \"possible_causes\": [\n            \"若无输出，检查 interval/count 是否正确，确保传感器已初始化且数据有效；同时确认 shell 输出通道未被屏蔽。\"\n        ],\n        \"diagnostics\": [\n            \"1) 添加 RTK_SHELL_PRINTF 在关键点（如 init/run/wait）输出调试信息，确认流程到达预期位置。\",\n            \"2) 检查 sensor_list 是否与实际传感器名称匹配，确保 sensor_count 与列表长度一致。\",\n            \"3) 利用 assert 或自定义错误码检查返回",
+    "parameters": [
+      {
+        "name": "gyro_sensor_stream",
+        "type": "gyro_sensor_stream",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "RTK_scheduler_pause",
+      "ft_aop_sensor_ft_mode",
+      "ft_aop_sensor_stream"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  }
+]

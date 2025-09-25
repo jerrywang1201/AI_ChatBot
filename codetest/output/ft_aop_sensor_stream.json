@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "file_path": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp",
+    "function_name": "ft_aop_sensor_stream",
+    "module_name": "ft_aop_sensor.cpp",
+    "module_type": "CPP"
+  },
+  "summary": {
+    "description": "```json\n{\n  \"metadata\": {\n    \"file_path\": \"/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/legacy/target/common/ft_tests/ft_aop_sensor/ft_aop_sensor.cpp\",\n    \"function_name\": \"ft_aop_sensor_stream\",\n    \"module_name\": \"ft_aop_sensor.cpp\",\n    \"module_type\": \"CPP\"\n  },\n  \"summary\": {\n    \"description\": \"This function is responsible for processing and streaming sensor data from the AOP sensor.\",\n    \"logic_flow\": [\n      \"Initialize sensor configuration\",\n      \"Start sensor data acquisition\",\n      \"Process and buffer sensor data\",\n      \"Stream processed sensor data to the destination\"\n    ]\n  },\n  \"parameters\": {\n    \"list\": []\n  },\n  \"return_value\": \"void\"\n  \"analysis\": {\n    \"possible_causes\": [\n      \"Incorrect sensor configuration\",\n      \"Sensor data acquisition interrupted\",\n      \"Data processing error or buffer overflow\",\n      \"Destination stream unavailable or full\"\n    ],\n    \"diagnostics\": [\n      \"Check sensor configuration and connection\",\n      \"Monitor for interrupts and handle them gracefully\",\n      \"Implement data processing error handling and logging\",\n      \"Verify destination stream availability and capacity\"\n    ]\n  },\n  \"associations\": {\n    \"called_functions\": [],\n    \"keywords\": [\"stream\", \"sensor\", \"imu\", \"irq\", \"dma\", \"fifo\", \"i2c\", \"spi\"]\n  }\n}\n```",
+    "logic_flow": []
+  },
+  "parameters": {
+    "list": []
+  },
+  "return_value": "",
+  "analysis": {
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  "associations": {
+    "called_functions": [],
+    "keywords": []
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "function_name": "FT_SHELL_METHOD",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/modules/generic/src/ft_shell_generic.cpp:105-118",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [
+      {
+        "name": "ft_reset",
+        "type": "ft_reset",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "FT_LOG",
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "ft_sysmgr_action_reset"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  }
+]

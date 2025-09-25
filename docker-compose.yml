@@ -1,0 +1,63 @@
+# version: '3.9'
+
+# services:
+#   chatbot:
+#     build: .
+#     ports:
+#       - "8001:8001"
+#     volumes:
+#       - .:/app
+#     environment:
+#       - INTERLINKED_API_KEY=in-YTxvz7PxS1WCcTvtnfBcfA
+#       - INTERLINKED_MODEL=gemini-2.5-flash
+#     working_dir: /app
+#     command: uvicorn backend.app:app --host 0.0.0.0 --port 8001 --reload
+
+#   open-webui:
+#     image: ghcr.io/open-webui/open-webui:main
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - OLLAMA_BASE_URL=http://host.docker.internal:8002
+#     volumes:
+#       - open-webui-data:/app/backend/data
+#     healthcheck:
+#       disable: true
+
+# volumes:
+#   open-webui-data:
+version: '3.9'
+
+services:
+  chatbot:
+    build: .
+    container_name: chatbot
+    ports:
+      - "8001:8001"
+    volumes:
+      - .:/app
+    environment:
+      - INTERLINKED_API_KEY=in-YTxvz7PxS1WCcTvtnfBcfA
+      - INTERLINKED_MODEL=gemini-2.5-flash
+    working_dir: /app
+    command: uvicorn backend.app:app --host 0.0.0.0 --port 8001 --reload
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    depends_on:
+      - chatbot
+    ports:
+      - "3000:3000"
+    environment:
+
+      - OPENAI_API_BASE_URL=http://chatbot:8001/v1
+      - OPENAI_API_KEY=dev-anything        
+      - ENABLE_OPENAI_API=true
+    volumes:
+      - open-webui-data:/app/backend/data
+    healthcheck:
+      disable: true
+
+volumes:
+  open-webui-data:

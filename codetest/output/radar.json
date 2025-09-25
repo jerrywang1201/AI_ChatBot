@@ -1,0 +1,30 @@
+[1] Radar 154901156 (comp 1711116)  score=0.490
+Title: [H90] [IMU] Gain/Range not set correctly after reboot
+Description: <DescriptionEntry 2025-07-02 23:09:22+00:00 by Nathan Franczyk (nfranczyk@apple.com)>
+Summary:
+The range/gain of scarif is incorrect after reboot. The Z axis reads about 32 G's of force
+
+Steps To Reproduce:
+gyro aop ft mode enable
+aopsensor set ram_buffer ap
+aopsensor free
+aopsensor record accel|gyro 1250 1
+aopsensor stop
+aopsensor free
+aopsensor record accel|gyro 1250 2400
+ft wait 3000
+aopsensor stop
+aopsensor dump
+-------------------------------------------------------------------------------
+[2] Radar 109446758 (comp 1533631)  score=0.480
+Title: [B768] IMU "aopsensor dump" get unexpected Accel,Gyro data output in COEX sequence
+Description: <DescriptionEntry 2023-05-17 08:00:31+00:00 by Qifang Qian (qian_qifang@apple.com)>
+Summary:
+
+In B768 COEX sequence, we get unexpected Gyro, Accel data output from “aopsensor dump”.
+
+When running data collection sequence only, the data is all good, while in the sequences of COEX audio setup and after “audio start”, the data collection sequence will get wrong data showing as below:
+
+gyro:: sample: -1082130427  interval: -2069270213  x: -1082130445  y: -1082130445  z: 994323643  temp: -16512.  timestamp: 4261411359679315973
+ gyro:: sample: 998893264  interval:   -18  x: 996741489  y: -1082130427  z: -1082130427  temp: -16513.  timestamp: -4647714868068089869
+ gyro:: sample: -1082130445  interval: 2081928924  x: -1082130427  y: 998297421  z: -1082130445  temp: 15261.6  timestamp: -46477147929…

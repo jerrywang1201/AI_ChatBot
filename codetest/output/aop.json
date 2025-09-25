@@ -1,0 +1,69 @@
+[
+  {
+    "function_name": "ft_aop_sensor_stream",
+    "location": "ft_aop_sensor.cpp:65-96",
+    "role": "Collects and processes data from various sensors (such as accelerometer, gyroscope, compass, etc.) in the system and outputs it to the specified channel or buffer.",
+    "parameters": [
+      {
+        "name": "shell",
+        "type": "RTK_shell",
+        "meaning": "Reference to the system shell, used for printing and controlling operations"
+      },
+      {
+        "name": "sensor_list",
+        "type": "const char *const",
+        "meaning": "Reference to the sensor list, containing sensor names or identifiers"
+      },
+      {
+        "name": "sensor_count",
+        "type": "size_t",
+        "meaning": "Number of sensors, used to determine how many sensors need to be processed"
+      },
+      {
+        "name": "interval",
+        "type": "uint32_t",
+        "meaning": "Sampling interval, defines the time between each sample"
+      },
+      {
+        "name": "count",
+        "type": "uint32_t",
+        "meaning": "Number of data packets per transmission, used to control the batch size of data transfer"
+      },
+      {
+        "name": "aop_sensor_mode",
+        "type": "uint8_t",
+        "meaning": "Sensor data processing mode, such as raw data mode or processed data mode"
+      }
+    ],
+    "called_functions": [
+      "RTK_SHELL_PRINTF",
+      "assert",
+      "context",
+      "init",
+      "run",
+      "wait"
+    ],
+    "logic_flow": [
+      "Initialize sensor parameters and system environment",
+      "Based on the sensor list and count, set the sampling interval and data transfer parameters",
+      "Enter the data acquisition and processing loop",
+      "Obtain data from sensors and perform preprocessing according to the mode",
+      "Transfer the processed data to the designated channel or buffer",
+      "Optionally perform further processing or filtering of the data depending on sensor type and parameters"
+    ],
+    "possible_causes": [
+      "Sensor hardware failure or connection issue, leading to inability to acquire data",
+      "Incorrect sensor parameter configuration, such as an excessively large sampling interval or data batch size, causing delays or data loss",
+      "Insufficient system resources, such as memory or CPU time slices, resulting in delayed or failed data processing",
+      "Data transfer channel or buffer is full, preventing data storage or transmission",
+      "Software logic errors, such as incorrect loop control or data handling, leading to improper processing or transmission"
+    ],
+    "diagnostics": [
+      "Check sensor hardware connections and status to ensure sensors are working properly",
+      "Verify that sensor parameters are correctly configured, especially the sampling interval and data transfer settings",
+      "Check system resource usage to ensure sufficient memory and CPU availability",
+      "Inspect the status of data transfer channels or buffers to confirm enough space for data storage",
+      "Review software logic, particularly loop control and data processing logic, to ensure correctness"
+    ]
+  }
+]

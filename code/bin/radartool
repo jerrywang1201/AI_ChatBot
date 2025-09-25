@@ -1,0 +1,5 @@
+#!/Users/jialongwangsmacbookpro16/Desktop/chatbot/code/bin/python3
+
+import runpy
+runpy.run_module('radarclient.radartool')
+

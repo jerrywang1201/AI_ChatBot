@@ -1,0 +1,13 @@
+prompt = f"""
+You are a firmware diagnostics assistant.
+
+Given the following firmware script content, analyze and answer the following questions clearly and concisely:
+
+1. ✅ What does this script do?
+2. 🧾 What inputs or arguments does it expect (e.g., CLI flags, file paths, device identifiers)?
+3. ⚙️ How is the script typically invoked or used?
+4. 📌 In what scenario(s) should a user run this script (e.g., production testing, bring-up, factory restore)?
+
+Script Content:
+\"\"\"{script_text}\"\"\"
+"""

@@ -1,0 +1,156 @@
+[
+  {
+    "function_name": "ft_aop_sensor_record_start_callback",
+    "location": "appleapfactorytest/modules/aop_sensor/src/ft_aop_sensor.cpp:123-128",
+    "role": "作为回调函数，用于通知系统传感器记录启动。",
+    "parameters": [
+      {
+        "name": "context",
+        "type": "void*",
+        "meaning": "指向相关上下文数据的指针，例如 RTK_shell 实例。"
+      }
+    ],
+    "called_functions": [
+      "RTK_semaphore_signal"
+    ],
+    "logic_flow": [
+      "接收上层系统提供的回调，启动传感器记录流程。",
+      "使用 RTK_semaphore_signal 信号量通知其他线程或组件。"
+    ],
+    "possible_causes": [],
+    "diagnostics": [
+      "检查 RTK_semaphore_signal 是否正确调用。",
+      "确认上层系统是否正确调用了 ft_aop_sensor_record_start_callback。"
+    ]
+  },
+  {
+    "function_name": "ft_aop_sensor_record_start",
+    "location": "appleapfactorytest/modules/aop_sensor/src/ft_aop_sensor.cpp:130-143",
+    "role": "初始化传感器记录线程并开始运行。",
+    "parameters": [
+      {
+        "name": "v",
+        "type": "void*",
+        "meaning": "指向上层系统提供的数据或上下文的指针。"
+      }
+    ],
+    "called_functions": [
+      "RTK_semaphore_wait",
+      "run"
+    ],
+    "logic_flow": [
+      "进入一个无限循环，可能用于持续记录传感器数据。",
+      "使用 RTK_semaphore_wait 等待特定的信号量，以控制记录的进展。",
+      "调用 run 函数执行传感器记录的核心逻辑。"
+    ],
+    "possible_causes": [],
+    "diagnostics": [
+      "检查 RTK_semaphore_wait 是否正确调用，以及是否阻塞在正确的信号量上。",
+      "确认上层系统是否正确调用了 ft_aop_sensor_record_start。"
+    ]
+  },
+  {
+    "function_name": "ft_aop_sensor_record",
+    "location": "appleapfactorytest/modules/aop_sensor/src/ft_aop_sensor.cpp:145-240",
+    "role": "负责传感器数据记录的核心逻辑，包括初始化、配置、记录和管理。",
+    "parameters": [
+      {
+        "name": "shell",
+        "type": "RTK_shell",
+        "meaning": "RTK_shell 实例，用于访问系统资源和管理线程。"
+      },
+      {
+        "name": "sensor_list",
+        "type": "const char* const[]",
+        "meaning": "传感器名称或标识符的数组，用于标识需要记录的传感器。"
+      },
+      {
+        "name": "sensor_count",
+        "type": "size_t",
+        "meaning": "sensor_list 数组中的传感器数量。"
+      },
+      {
+        "name": "interval",
+        "type": "uint32_t",
+        "meaning": "记录数据的间隔时间，单位为毫秒。"
+      },
+      {
+        "name": "count",
+        "type": "uint32_t",
+        "meaning": "每次记录的数据条数。"
+      },
+      {
+        "name": "aop_sensor_mode",
+        "type": "uint8_t",
+        "meaning": "传感器记录的模式，例如连续记录或间歇记录。"
+      },
+      {
+        "name": "stop_on_full",
+        "type": "bool",
+        "meaning": "是否在缓冲区满时停止记录。"
+      },
+      {
+        "name": "delay_ms",
+        "type": "uint32_t",
+        "meaning": "记录开始前或记录结束后的延迟时间，单位为毫秒。"
+      }
+    ],
+    "called_functions": [
+      "AopSensorHelper",
+      "FT_SHELL_PRINTF",
+      "RTK_semaphore_init",
+      "RTK_thread_create",
+      "RTK_timer_call_after",
+      "freeSampleBuffer",
+      "init",
+      "malloc",
+      "run",
+      "setupAsyncConfig"
+    ],
+    "logic_flow": [
+      "初始化传感器记录相关参数和资源。",
+      "创建记录线程并启动。",
+      "设置传感器记录的间隔、计数和模式。",
+      "使用 RTK_timer_call_after 设置记录的延迟。",
+      "调用 run 函数执行传感器记录的核心逻辑。",
+      "释放资源并清理。"
+    ],
+    "possible_causes": [],
+    "diagnostics": [
+      "检查传感器列表和参数的有效性。",
+      "确认线程创建和启动的正确性。",
+      "验证计时器和记录逻辑的运行状态。",
+      "检查缓冲区和资源释放的正确性。"
+    ]
+  },
+  {
+    "function_name": "FT_SHELL_METHOD(aop_sensor_record)",
+    "location": "appleapfactorytest/modules/aop_sensor/src/ft_shell_aop_sensor.cpp:37-73",
+    "role": "处理 shell 命令行输入，调用 ft_aop_sensor_record 并输出结果。",
+    "parameters": [
+      {
+        "name": "aop_sensor_record",
+        "type": "aop_sensor_record",
+        "meaning": "指向 ft_aop_sensor_record 函数的指针。"
+      }
+    ],
+    "called_functions": [
+      "FT_SHELL_PRINTF",
+      "FT_SHELL_RESPONSE",
+      "ParseAndProcess",
+      "ft_aop_sensor_record",
+      "strstr"
+    ],
+    "logic_flow": [
+      "接收 shell 命令行输入并解析参数。",
+      "调用 ft_aop_sensor_record 函数，并根据返回结果输出响应。",
+      "使用 strstr 搜索参数中的特定字符串。"
+    ],
+    "possible_causes": [],
+    "diagnostics": [
+      "确认 shell 命令行输入的正确性。",
+      "检查参数解析和输出逻辑的正确性。",
+      "验证 ft_aop_sensor_record 函数的返回结果。"
+    ]
+  }
+]

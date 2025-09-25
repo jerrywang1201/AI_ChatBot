@@ -1,0 +1,291 @@
+[
+  {
+    "function_name": "ftServiceThread",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b768m_b0/src/factory_test.cpp:135-246",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [
+      {
+        "name": "arg",
+        "type": "void",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "GPIO_DRIVE",
+      "RTK_console_printf",
+      "RTK_eventsource_init",
+      "RTK_gpio_config",
+      "RTK_lock_lock",
+      "RTK_lock_unlock",
+      "RTK_scheduler_pause",
+      "RTK_workloop_add",
+      "RTK_workloop_init",
+      "assert",
+      "buddy2DataSessionGetInfoPtr",
+      "detected",
+      "ft_gpio_get",
+      "ft_laguna_readbatt",
+      "ft_laguna_run_smartcharging",
+      "ft_queue_init",
+      "ft_queue_process",
+      "ft_sysmgr_uvp_shutdown_now",
+      "syslog",
+      "usElapsedSince",
+      "usTime"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "ft_factory_test_log_laguna_info",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b768m_b0/src/factory_test.cpp:317-338",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [],
+    "called_functions": [
+      "ft_dlog_text",
+      "ft_laguna_readbatt"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "battery_save_SOC_nvram",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b768m_b0/src/factory_test.cpp:510-546",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [],
+    "called_functions": [
+      "RTKOS_nvram_set_scalar_var",
+      "assert",
+      "ft_laguna_readbatt",
+      "ft_laguna_save_batt_health_nv",
+      "syslog"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "ftServiceThread",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b698/src/factory_test.cpp:107-201",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [
+      {
+        "name": "arg",
+        "type": "void",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "GPIO_DRIVE",
+      "RTK_gpio_config",
+      "RTK_lock_lock",
+      "RTK_lock_unlock",
+      "RTK_platform_hibernate",
+      "RTK_scheduler_pause",
+      "assert",
+      "buddy2DataSessionGetInfoPtr",
+      "ft_gpio_get",
+      "ft_laguna_readbatt",
+      "ft_queue_init",
+      "ft_queue_process",
+      "ft_sysmgr_prepare_for_crabs_reset_irq",
+      "ft_sysmgr_uvp_shutdown_now",
+      "syslog",
+      "usElapsedSince",
+      "usTime"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "battery_save_SOC_nvram",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b698/src/factory_test.cpp:388-413",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [],
+    "called_functions": [
+      "RTKOS_nvram_set_scalar_var",
+      "assert",
+      "ft_laguna_readbatt",
+      "syslog"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "ftServiceThread",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b868e_b0/src/factory_test.cpp:135-246",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [
+      {
+        "name": "arg",
+        "type": "void",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "GPIO_DRIVE",
+      "RTK_console_printf",
+      "RTK_eventsource_init",
+      "RTK_gpio_config",
+      "RTK_lock_lock",
+      "RTK_lock_unlock",
+      "RTK_scheduler_pause",
+      "RTK_workloop_add",
+      "RTK_workloop_init",
+      "assert",
+      "buddy2DataSessionGetInfoPtr",
+      "detected",
+      "ft_gpio_get",
+      "ft_laguna_readbatt",
+      "ft_laguna_run_smartcharging",
+      "ft_queue_init",
+      "ft_queue_process",
+      "ft_sysmgr_uvp_shutdown_now",
+      "syslog",
+      "usElapsedSince",
+      "usTime"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "ft_factory_test_log_laguna_info",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b868e_b0/src/factory_test.cpp:317-338",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [],
+    "called_functions": [
+      "ft_dlog_text",
+      "ft_laguna_readbatt"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "battery_save_SOC_nvram",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b868e_b0/src/factory_test.cpp:510-546",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [],
+    "called_functions": [
+      "RTKOS_nvram_set_scalar_var",
+      "assert",
+      "ft_laguna_readbatt",
+      "ft_laguna_save_batt_health_nv",
+      "syslog"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "ftServiceThread",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b515d_b0/src/factory_test.cpp:135-246",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [
+      {
+        "name": "arg",
+        "type": "void",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "GPIO_DRIVE",
+      "RTK_console_printf",
+      "RTK_eventsource_init",
+      "RTK_gpio_config",
+      "RTK_lock_lock",
+      "RTK_lock_unlock",
+      "RTK_scheduler_pause",
+      "RTK_workloop_add",
+      "RTK_workloop_init",
+      "assert",
+      "buddy2DataSessionGetInfoPtr",
+      "detected",
+      "ft_gpio_get",
+      "ft_laguna_readbatt",
+      "ft_laguna_run_smartcharging",
+      "ft_queue_init",
+      "ft_queue_process",
+      "ft_sysmgr_uvp_shutdown_now",
+      "syslog",
+      "usElapsedSince",
+      "usTime"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "ft_factory_test_log_laguna_info",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b515d_b0/src/factory_test.cpp:317-338",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [],
+    "called_functions": [
+      "ft_dlog_text",
+      "ft_laguna_readbatt"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "battery_save_SOC_nvram",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b515d_b0/src/factory_test.cpp:511-547",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [],
+    "called_functions": [
+      "RTKOS_nvram_set_scalar_var",
+      "assert",
+      "ft_laguna_readbatt",
+      "ft_laguna_save_batt_health_nv",
+      "syslog"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  },
+  {
+    "function_name": "ftServiceThread",
+    "location": "/Users/jialongwangsmacbookpro16/Desktop/chatbot/data/scripts/appleapfactorytest/target/b788_b0/src/factory_test.cpp:137-249",
+    "role": "[AI SDK ask error] 503 Server Error: Service Unavailable for url: https://api.afm.aiml.apple.com/v1/chat/completions",
+    "parameters": [
+      {
+        "name": "arg",
+        "type": "void",
+        "meaning": ""
+      }
+    ],
+    "called_functions": [
+      "GPIO_DRIVE",
+      "RTK_console_printf",
+      "RTK_eventsource_init",
+      "RTK_gpio_config",
+      "RTK_lock_lock",
+      "RTK_lock_unlock",
+      "RTK_scheduler_pause",
+      "RTK_workloop_add",
+      "RTK_workloop_init",
+      "assert",
+      "buddy2DataSessionGetInfoPtr",
+      "detected",
+      "ft_gpio_get",
+      "ft_laguna_readbatt",
+      "ft_laguna_run_smartcharging",
+      "ft_queue_init",
+      "ft_queue_process",
+      "ft_sysmgr_uvp_shutdown_now",
+      "ft_upy_startup",
+      "syslog",
+      "usElapsedSince",
+      "usTime"
+    ],
+    "logic_flow": [],
+    "possible_causes": [],
+    "diagnostics": []
+  }
+]
