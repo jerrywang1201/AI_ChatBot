@@ -63,7 +63,7 @@ Events==0.5
 fake-useragent==2.2.0
 fastapi==0.115.7
 faster-whisper==1.1.1
-filelock==3.18.0
+filelock==3.20.1
 filetype==1.2.0
 firecrawl-py==1.12.0
 Flask==3.1.2
