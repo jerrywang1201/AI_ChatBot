@@ -11,7 +11,7 @@ argon2-cffi-bindings==25.1.0
 asgiref==3.8.1
 async-timeout==5.0.1
 azure-ai-documentintelligence==1.0.2
-azure-core==1.35.0
+azure-core==1.38.0
 azure-identity==1.20.0
 azure-storage-blob==12.24.1
 backoff==2.2.1
@@ -110,7 +110,7 @@ pyee==12.0.0
 pymdown-extensions==10.16.1
 PyMySQL==1.1.1
 pypandoc==1.15
-pypdf==6.4.0
+pypdf==6.6.0
 PyPika==0.48.9
 pyproject_hooks==1.2.0
 python-engineio==4.12.2

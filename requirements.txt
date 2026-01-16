@@ -35,7 +35,7 @@ elastic-transport==8.17.1
 elasticsearch==9.0.1
 emoji==2.14.1
 fastapi==0.115.7
-filelock==3.20.1
+filelock==3.20.3
 fsspec==2025.3.0
 ftfy==6.2.3
 google-ai-generativelanguage==0.6.15
