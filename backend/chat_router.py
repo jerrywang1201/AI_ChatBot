@@ -107,7 +107,7 @@ def route_user_input(query: str, *, force_followups: bool = False, session_id: O
         return "请描述你的问题或贴出相关日志。"
 
    
-    if state.pending_questions and state.last_query and query not in ("1", "2"):
+    if state.pending_questions and state.last_query:
         current_q = state.pending_questions.pop(0)
         state.user_context[current_q] = query
         if state.pending_questions:
