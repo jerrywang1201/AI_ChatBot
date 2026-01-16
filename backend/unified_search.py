@@ -586,6 +586,8 @@ def handle_log_or_scene(scene_text: str) -> str:
     items: List[Dict[str, Any]] = []
     for pl in code_hits:
         code = pl.get("content") or pl.get("code") or ""
+        if not code:
+            continue
         fn   = pl.get("function_name") or ""
         snippet = _clip(code, 900)
         items.append({
@@ -601,7 +603,13 @@ def handle_log_or_scene(scene_text: str) -> str:
 
     # Ask model to produce structured JSON (role/call chain/diagnostics)
     code_json: List[Dict[str, Any]] = []
-    if items:
+    structured_hits = [
+        h for h in code_hits
+        if isinstance(h, dict) and any(k in h for k in ("role", "parameters", "called_functions", "logic_flow", "diagnostics"))
+    ]
+    if structured_hits:
+        code_json = structured_hits
+    elif items:
         prompt = _build_code_json_prompt(phrase=code_query, items=items, question=scene_text[:200])
         resp = ask_text(prompt)
         if isinstance(resp, str) and resp.startswith("[fallback echo]"):
