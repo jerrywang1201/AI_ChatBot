@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import json
 import re
-from typing import Dict, Any, List
+from dataclasses import dataclass, field
+from typing import Dict, Any, List, Optional
 
 
 from backend.unified_search import handle_natural_query, handle_log_or_scene
@@ -17,9 +18,23 @@ except Exception:
         return "[fallback echo]\n" + prompt
 
 
-_pending_questions: List[str] = []
-_user_context: Dict[str, str] = {}
-_last_query: Dict[str, str | None] = {"value": None}
+@dataclass
+class _SessionState:
+    pending_questions: List[str] = field(default_factory=list)
+    user_context: Dict[str, str] = field(default_factory=dict)
+    last_query: Optional[str] = None
+
+
+_sessions: Dict[str, _SessionState] = {}
+
+
+def _get_state(session_id: Optional[str]) -> _SessionState:
+    sid = (session_id or "default").strip() or "default"
+    state = _sessions.get(sid)
+    if state is None:
+        state = _SessionState()
+        _sessions[sid] = state
+    return state
 
 
 def _gen_followups(initial_query: str) -> List[str]:
@@ -75,39 +90,40 @@ def need_followups(text: str) -> bool:
     return _too_vague(text)
 
 
-def reset_state():
+def reset_state(session_id: Optional[str] = None):
     """外部可调用，清理本地会话态"""
-    _pending_questions.clear()
-    _user_context.clear()
-    _last_query["value"] = None
+    state = _get_state(session_id)
+    state.pending_questions.clear()
+    state.user_context.clear()
+    state.last_query = None
 
 
-def route_user_input(query: str, *, force_followups: bool = False) -> str:
+def route_user_input(query: str, *, force_followups: bool = False, session_id: Optional[str] = None) -> str:
   
-    global _pending_questions, _user_context, _last_query
+    state = _get_state(session_id)
 
     query = (query or "").strip()
     if not query:
         return "请描述你的问题或贴出相关日志。"
 
    
-    if _pending_questions and _last_query["value"] and query not in ("1", "2"):
-        current_q = _pending_questions.pop(0)
-        _user_context[current_q] = query
-        if _pending_questions:
+    if state.pending_questions and state.last_query and query not in ("1", "2"):
+        current_q = state.pending_questions.pop(0)
+        state.user_context[current_q] = query
+        if state.pending_questions:
            
-            return _pending_questions[0]
+            return state.pending_questions[0]
        
-        query = _last_query["value"] + "\n\n" + "\n".join(f"{k}: {v}" for k, v in _user_context.items())
+        query = state.last_query + "\n\n" + "\n".join(f"{k}: {v}" for k, v in state.user_context.items())
 
    
-    if _last_query["value"] is None:
-        _last_query["value"] = query
-        _user_context = {}
+    if state.last_query is None:
+        state.last_query = query
+        state.user_context = {}
         if force_followups or need_followups(query):
-            _pending_questions = _gen_followups(query)
-            if _pending_questions:
-                return _pending_questions[0]
+            state.pending_questions = _gen_followups(query)
+            if state.pending_questions:
+                return state.pending_questions[0]
 
     
     try:
@@ -117,9 +133,9 @@ def route_user_input(query: str, *, force_followups: bool = False) -> str:
             answer = handle_natural_query(query)
 
     
-        reset_state()
+        reset_state(session_id)
         return answer
 
     except Exception as e:
-        reset_state()
+        reset_state(session_id)
         return f"❌ Unified search failed: {e}"

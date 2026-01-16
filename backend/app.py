@@ -20,6 +20,7 @@ class CompletionRequest(BaseModel):
     temperature: Optional[float] = None
     max_tokens: Optional[int] = None
     tools: Optional[List[Dict[str, Any]]] = None
+    user: Optional[str] = None
 
 
 @app.get("/ping")
@@ -67,9 +68,10 @@ async def openai_compatible_chat(req: Request):
         return JSONResponse(status_code=400, content={"error": "No user message provided"})
 
     last_message = user_messages[-1]
+    session_id = req_obj.user or req.headers.get("X-Session-Id") or (req.client.host if req.client else None)
     answer = ""
     try:
-        answer = route_user_input(last_message) or ""
+        answer = route_user_input(last_message, session_id=session_id) or ""
     except Exception as e:
         answer = f"Internal Error: {e}"
 
