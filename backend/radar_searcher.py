@@ -1,10 +1,11 @@
+import difflib
 import re
 
-from radarclient.client import RadarClient 
-from radarclient.model  import Query  
-from interlinked_local import AI
-from interlinked_local import Section
-from code_search_tool import search_codebase
+from radarclient.client import RadarClient
+from radarclient.model import Query
+
+from ai.my_interlinked_core import ask_text
+from backend.code_search_tool import search_codebase
 
 client = RadarClient()
 
@@ -12,6 +13,10 @@ def extract_code_keywords(text: str) -> list[str]:
     filenames = re.findall(r'\b[\w\-/]+\.cpp\b', text)
     functions = re.findall(r'\b[\w]+\(\)', text)
     return filenames + functions
+
+def _similarity(a: str, b: str) -> float:
+    return difflib.SequenceMatcher(a=a or "", b=b or "").ratio()
+
 
 def generate_ai_summary(user_query: str, radar, discussion_text: str, code_refs: list[str]) -> str:
     prompt = f"""
@@ -37,11 +42,11 @@ Please summarize:
 - Which code files or functions might be relevant?
 - If nothing helps, suggest next steps.
 """
-    return AI.chat(prompt)
+    return ask_text(prompt)
 
 def find_similar_radar_issues(user_query: str):
     component_name = "AP FW Diags B788"
-    query = RadarQuery(component=component_name)
+    query = Query(component=component_name)
     radars = client.find(query)
 
     if not radars:
@@ -50,7 +55,7 @@ def find_similar_radar_issues(user_query: str):
     matches = []
     for radar in radars:
         full_text = f"{radar.title or ''}\n{radar.description or ''}"
-        score = AI.similarity(user_query, full_text)
+        score = _similarity(user_query, full_text)
         matches.append((score, radar))
 
     matches.sort(reverse=True, key=lambda x: x[0])
@@ -69,6 +74,15 @@ def find_similar_radar_issues(user_query: str):
     for kw in keywords:
         code_results += search_codebase(kw)
 
+    code_lines = []
+    for item in code_results:
+        if isinstance(item, dict):
+            loc = item.get("location") or f"{item.get('file','')}:{item.get('start_line','')}-{item.get('end_line','')}"
+            name = item.get("function_name") or item.get("name") or "(unknown)"
+            code_lines.append(f"{name} @ {loc}")
+        else:
+            code_lines.append(str(item))
+
     ai_summary = generate_ai_summary(user_query, best_radar, discussion_text, keywords)
 
     return (
@@ -78,5 +92,5 @@ def find_similar_radar_issues(user_query: str):
         f"- Description: {best_radar.description}\n\n"
         f"📚 AI Summary:\n{ai_summary}\n\n"
         f"🔎 Related Codebase Hits:\n" +
-        ("\n".join(code_results) if code_results else "No matches found in source code.")
+        ("\n".join(code_lines) if code_lines else "No matches found in source code.")
     )
