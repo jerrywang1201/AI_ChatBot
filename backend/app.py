@@ -25,7 +25,7 @@ class CompletionRequest(BaseModel):
 
 @app.get("/ping")
 async def ping():
-    return {"status": "pon"}
+    return {"status": "pong"}
 
 
 @app.get("/v1/models")
